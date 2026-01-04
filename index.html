@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historical Pakistan - Travel Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #f8c300;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        nav {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 15px 0;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #f8c300;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 80px 20px;
+            text-align: center;
+            background-color: #f1f1f1;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: #555;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #e74c3c;
+            color: white;
+            padding: 15px 35px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #c0392b;
+        }
+        
+        /* Historical Places Section */
+        .section-title {
+            text-align: center;
+            margin: 60px 0 40px;
+            color: #2c3e50;
+            font-size: 2.5rem;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background-color: #f8c300;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .places-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .place-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .place-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .place-img {
+            height: 250px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .place-content {
+            padding: 25px;
+        }
+        
+        .place-title {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .place-description {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .place-location {
+            color: #e74c3c;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .place-location i {
+            margin-right: 8px;
+        }
+        
+        /* Travel Tips Section */
+        .tips-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+        
+        .tip-card {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid #3498db;
+        }
+        
+        .tip-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .tip-card h3 i {
+            margin-right: 10px;
+            color: #3498db;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 50px 0 20px;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #f8c300;
+        }
+        
+        .footer-section p {
+            margin-bottom: 20px;
+            color: #ddd;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            color: white;
+            background-color: #34495e;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: #f8c300;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #34495e;
+            color: #ddd;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 8px 0;
+            }
+            
+            .places-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                padding: 50px 20px;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .place-card {
+                margin: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="logo">Historical Pakistan</div>
+            <p class="tagline">Discover the rich cultural heritage and majestic historical sites of Pakistan, from ancient civilizations to Mughal architecture.</p>
+        </div>
+    </header>
+    
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#places"><i class="fas fa-landmark"></i> Historical Places</a></li>
+                <li><a href="#tips"><i class="fas fa-lightbulb"></i> Travel Tips</a></li>
+                <li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Explore Pakistan's Rich Historical Heritage</h1>
+            <p>From the ancient Indus Valley Civilization to the magnificent Mughal Empire, Pakistan is home to some of the world's most significant historical sites. Journey through time and discover architectural marvels, ancient ruins, and cultural treasures.</p>
+            <a href="#places" class="cta-button">Discover Historical Places</a>
+        </div>
+    </section>
+    
+    <!-- Historical Places Section -->
+    <section id="places">
+        <div class="container">
+            <h2 class="section-title">Historical Places in Pakistan</h2>
+            <div class="places-container">
+                <!-- Place 1 -->
+                <div class="place-card">
+                    <img src="https://images.unsplash.com/photo-1585506936724-fa0c19d0d07a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Badshahi Mosque" class="place-img">
+                    <div class="place-content">
+                        <h3 class="place-title">Badshahi Mosque</h3>
+                        <p class="place-description">The Badshahi Mosque in Lahore is one of the largest mosques in the world. Built by Emperor Aurangzeb in 1671, it is a stunning example of Mughal architecture.</p>
+                        <div class="place-location"><i class="fas fa-map-marker-alt"></i> Lahore, Punjab</div>
+                        <p><strong>Best time to visit:</strong> October to March</p>
+                    </div>
+                </div>
+                
+                <!-- Place 2 -->
+                <div class="place-card">
+                    <img src="https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mohenjo-Daro" class="place-img">
+                    <div class="place-content">
+                        <h3 class="place-title">Mohenjo-Daro</h3>
+                        <p class="place-description">One of the world's earliest major urban settlements, Mohenjo-Daro was built around 2500 BCE and is a UNESCO World Heritage Site of the Indus Valley Civilization.</p>
+                        <div class="place-location"><i class="fas fa-map-marker-alt"></i> Sindh Province</div>
+                        <p><strong>Best time to visit:</strong> November to February</p>
+                    </div>
+                </div>
+                
+                <!-- Place 3 -->
+                <div class="place-card">
+                    <img src="https://images.unsplash.com/photo-1593693399744-5d85c2d3c3b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Lahore Fort" class="place-img">
+                    <div class="place-content">
+                        <h3 class="place-title">Lahore Fort</h3>
+                        <p class="place-description">The Lahore Fort, a UNESCO World Heritage Site, is a citadel in the city of Lahore. The fortress is a magnificent example of Mughal architecture.</p>
+                        <div class="place-location"><i class="fas fa-map-marker-alt"></i> Lahore, Punjab</div>
+                        <p><strong>Best time to visit:</strong> October to April</p>
+                    </div>
+                </div>
+                
+                <!-- Place 4 -->
+                <div class="place-card">
+                    <img src="https://images.unsplash.com/photo-1578662990685-8c4c8e7945e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Taxila" class="place-img">
+                    <div class="place-content">
+                        <h3 class="place-title">Taxila</h3>
+                        <p class="place-description">Taxila was an ancient Buddhist and Hindu city dating back to the 6th century BCE. It's a UNESCO World Heritage Site with ruins of multiple cities and monasteries.</p>
+                        <div class="place-location"><i class="fas fa-map-marker-alt"></i> Rawalpindi District, Punjab</div>
+                        <p><strong>Best time to visit:</strong> March to May, September to November</p>
+                    </div>
+                </div>
+                
+                <!-- Place 5 -->
+                <div class="place-card">
+                    <img src="https://images.unsplash.com/photo-1589552950456-75eeaf5c6a93?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Shalimar Gardens" class="place-img">
+                    <div class="place-content">
+                        <h3 class="place-title">Shalimar Gardens</h3>
+                        <p class="place-description">Built by Mughal emperor Shah Jahan in 1641, the Shalimar Gardens in Lahore are a beautiful Persian-style garden complex and a UNESCO World Heritage Site.</p>
+                        <div class="place-location"><i class="fas fa-map-marker-alt"></i> Lahore, Punjab</div>
+                        <p><strong>Best time to visit:</strong> February to April</p>
+                    </div>
+                </div>
+                
+                <!-- Place 6 -->
+                <div class="place-card">
+                    <img src="https://images.unsplash.com/photo-1548013146-72479768bada?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Rohtas Fort" class="place-img">
+                    <div class="place-content">
+                        <h3 class="place-title">Rohtas Fort</h3>
+                        <p class="place-description">Rohtas Fort is a 16th-century fortress built by Sher Shah Suri. This UNESCO World Heritage Site is an exceptional example of early Muslim military architecture.</p>
+                        <div class="place-location"><i class="fas fa-map-marker-alt"></i> Near Jhelum, Punjab</div>
+                        <p><strong>Best time to visit:</strong> September to April</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Travel Tips Section -->
+    <section id="tips">
+        <div class="container">
+            <h2 class="section-title">Travel Tips for Pakistan</h2>
+            <div class="tips-container">
+                <div class="tip-card">
+                    <h3><i class="fas fa-calendar-alt"></i> Best Time to Visit</h3>
+                    <p>The best time to visit historical sites in Pakistan is from October to March when the weather is pleasant. Summers can be extremely hot in most regions.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <h3><i class="fas fa-passport"></i> Visa Requirements</h3>
+                    <p>Most visitors need a visa to enter Pakistan. Check with the Pakistani embassy in your country for specific requirements. E-visas are available for many nationalities.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <h3><i class="fas fa-tshirt"></i> Dress Code</h3>
+                    <p>Dress modestly when visiting historical and religious sites. For women, covering shoulders and knees is recommended. Men should avoid shorts at religious sites.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <h3><i class="fas fa-language"></i> Language</h3>
+                    <p>Urdu is the national language, but English is widely spoken in tourist areas. Learning a few basic Urdu phrases can enhance your travel experience.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <h3><i class="fas fa-money-bill-wave"></i> Currency</h3>
+                    <p>The Pakistani Rupee (PKR) is the local currency. Credit cards are accepted in major hotels and restaurants, but carry cash for smaller establishments.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <h3><i class="fas fa-user-shield"></i> Safety</h3>
+                    <p>Pakistan is generally safe for tourists, but it's advisable to check travel advisories. Travel with registered guides at historical sites for the best experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Historical Pakistan</h3>
+                    <p>Discover the rich cultural heritage and majestic historical sites of Pakistan. We provide information to help you plan your historical journey.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p><a href="#home" style="color:#ddd; text-decoration:none;">Home</a></p>
+                    <p><a href="#places" style="color:#ddd; text-decoration:none;">Historical Places</a></p>
+                    <p><a href="#tips" style="color:#ddd; text-decoration:none;">Travel Tips</a></p>
+                    <p><a href="#contact" style="color:#ddd; text-decoration:none;">Contact Us</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Islamabad, Pakistan</p>
+                    <p><i class="fas fa-phone"></i> +92 300 1234567</p>
+                    <p><i class="fas fa-envelope"></i> info@historicalpakistan.com</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Historical Pakistan Travel Guide. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Highlight active navigation link on scroll
+        window.addEventListener('scroll', function() {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Add hover effect to place cards
+        document.querySelectorAll('.place-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
